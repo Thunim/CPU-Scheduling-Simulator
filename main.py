@@ -9,7 +9,7 @@ Preemptive Priority Scheduling (- preemptive) executes the process with the high
 the current process when a higher-priority process arrives. This program validate data; simulate each algorithm;
 create a Gantt chart/timeline; calculate CT, TAT=CT-AT, WT=TAT-BT, RT=first start-AT; compute averages.
 
-Developed by Group 3: (Bezalel Urim O. Siglos, Jolo Majhid C. Mercado, )
+Developed by Group 3: (Bezalel Urim O. Siglos, Jolo Majhid C. Mercado, Christian Gerald R. Chavez, )
 
 Files:
     main.py     - menu, input, and result display (run this file)
