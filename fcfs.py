@@ -5,7 +5,7 @@ def fcfs(processes):
 
     data = [p.copy() for p in processes]
 
-    # Sorts processes strictly by Arrival Time so earliest arrivals run first
+# Sorts processes strictly by Arrival Time so earliest arrivals run first
     data.sort(key=lambda x: (x["at"], x["pid"]))
 
     time = 0
@@ -13,7 +13,7 @@ def fcfs(processes):
 
     for p in data:
 
-        # If no process has arrived yet, record CPU IDLE time and jump clock forward
+# If no process has arrived yet, record CPU IDLE time and jump clock forward
         if time < p["at"]:
             timeline.append(("IDLE", time, p["at"]))
             time = p["at"]
