@@ -24,7 +24,7 @@ def priority_scheduling(processes):
             time += 1
             continue
 
-        # Lower priority number means higher priority
+# Lower priority number means higher priority
         p = min(
             available,
             key=lambda x: (x["priority"], x["at"], x["pid"])
@@ -35,11 +35,11 @@ def priority_scheduling(processes):
         if "rt" not in p:
             p["rt"] = time
 
-        # Runs 1 time unit at a time so a higher-priority arrival can interrupt it
+# Runs 1 time unit at a time so a higher-priority arrival can interrupt it
         remaining[pid] -= 1
         time += 1
 
-        # Add process to Gantt chart
+# Add process to Gantt chart
         if timeline and timeline[-1][0] == pid:
             timeline[-1] = (pid, timeline[-1][1], time)
         else:
