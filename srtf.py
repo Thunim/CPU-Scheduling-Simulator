@@ -25,7 +25,7 @@ def srtf(processes):
             time += 1
             continue
 
-        # Select process with shortest remaining time
+# Select process with shortest remaining time
         p = min(
             available,
             key=lambda x: (remaining[x["pid"]], x["at"], x["pid"])
@@ -37,11 +37,11 @@ def srtf(processes):
             first_start[pid] = time
             p["rt"] = time
 
-        # Execute for one time unit (allows switching immediately if a shorter job arrives)
+# Execute for one time unit (allows switching immediately if a shorter job arrives)
         remaining[pid] -= 1
         time += 1
 
-        # Merges consecutive blocks of the same process on the Gantt chart instead of splitting every 1 second
+# Merges consecutive blocks of the same process on the Gantt chart instead of splitting every 1 second
         if timeline and timeline[-1][0] == pid:
             timeline[-1] = (pid, timeline[-1][1], time)
         else:
