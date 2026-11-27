@@ -11,7 +11,7 @@ def sjf(processes):
 
     while completed < len(data):
 
-        # Filters only processes that have arrived by the current clock time and aren't finished
+# Filters only processes that have arrived by the current clock time and aren't finished
         available = [
             p for p in data
             if p["at"] <= time and "ct" not in p
@@ -27,13 +27,13 @@ def sjf(processes):
             time = next_time
             continue
 
-        # Choose the process with the shortest burst time
+# Choose the process with the shortest burst time
         p = min(available, key=lambda x: (x["bt"], x["at"], x["pid"]))
 
         start = time
         p["rt"] = start
 
-        # Runs the chosen process completely without interruption
+# Runs the chosen process completely without interruption
         time += p["bt"]
         p["ct"] = time
 
