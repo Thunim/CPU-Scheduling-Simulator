@@ -36,7 +36,8 @@ def get_number(message, minimum=0):
             else:
                 return number
 
-        except ValueError:  # Prevents the program from crashing if the user types letters instead of numbers
+# Prevents the program from crashing if the user types letters instead of numbers
+        except ValueError: 
             print("Invalid input! Please enter numbers only.")
 
 
@@ -53,7 +54,7 @@ def input_processes():
 
         pid = input("Process ID: ").strip()
 
-        # Makes sure the Process ID isn't empty and hasn't already been used
+# Makes sure the Process ID isn't empty and hasn't already been used
         while pid == "" or any(p["pid"] == pid for p in processes):
             print("Invalid or duplicate Process ID!")
             pid = input("Enter another Process ID: ").strip()
@@ -62,7 +63,7 @@ def input_processes():
         bt = get_number("Burst Time: ", 1)
         pr = get_number("Priority: ")
 
-        # Stores all details of a single process together as a dictionary
+# Stores all details of a single process together as a dictionary
         processes.append({
             "pid": pid,
             "at": at,
@@ -82,7 +83,7 @@ def print_gantt_chart(schedule):
         block = f" {process} |"
         top_bar += block
 
-        # Calculates exact spaces so ending timestamps align right under each "|" divider
+# Calculates exact spaces so ending timestamps align right under each "|" divider
         end_str = str(end)
         spaces_needed = len(block) - len(end_str)
         timeline += (" " * spaces_needed) + end_str
@@ -110,7 +111,7 @@ def display_results(name, processes, timeline):
 
     for p in sorted(processes, key=lambda x: x["pid"]):
 
-        # CPU scheduling formulas: Turnaround Time, Waiting Time, and Response Time
+# CPU scheduling formulas: Turnaround Time, Waiting Time, and Response Time
         tat = p["ct"] - p["at"]
         wt = tat - p["bt"]
         rt = p["rt"] - p["at"]
@@ -141,7 +142,7 @@ def display_results(name, processes, timeline):
 # MAIN PROGRAM - MENU
 def main():
 
-    # Maps each menu choice to (display name, algorithm function)
+# Maps each menu choice to (display name, algorithm function)
     algorithms = {
         "1": ("FCFS", fcfs),
         "2": ("SJF (NON-PREEMPTIVE)", sjf),
@@ -149,7 +150,8 @@ def main():
         "4": ("PRIORITY (PREEMPTIVE)", priority_scheduling),
     }
 
-    while True:  # Main program loop: keeps returning to the menu until the user selects Exit
+# Main program loop: keeps returning to the menu until the user selects Exit    
+    while True:  
 
         print("\n======================================")
         print("       CPU SCHEDULING SIMULATOR")
@@ -172,10 +174,10 @@ def main():
             print("\nInvalid choice! Please select 1-5.")
             continue
 
-        # Get process information
+# Get process information
         processes = input_processes()
 
-        # Run selected algorithm, then display its results
+# Run selected algorithm, then display its results
         name, algorithm = algorithms[choice]
         data, timeline = algorithm(processes)
         display_results(name, data, timeline)
